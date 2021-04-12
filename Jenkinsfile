@@ -7,11 +7,9 @@ pipeline {
                   bat vagrant ssh'''
             }
         }
-    }
         stage('VAGRANT UP') {
           steps {
-            ''' bat vagrant up
-                  bat vagrant ssh'''
-            }
+            ''' bat sudo ansible-playbook playbook.yaml'''
+          }
         }
-    }
+  
