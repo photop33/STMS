@@ -10,3 +10,21 @@
   handlers:
     - name: start nginx
       service: name=nginx state=started
+
+
+
+  tasks:
+   - name: Hashicorp Consul
+     url: https://www.consul.io/downloads
+     dest: /home/ubuntu
+     notify:
+       - Hashicorp Consul
+    
+    
+  handlers:
+   -name: Hashicorp Consul
+    service: name=Hashicrop state=started
+
+
+    
+  
