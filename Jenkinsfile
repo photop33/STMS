@@ -13,7 +13,12 @@ pipeline {
         stage('VAGRANT UP') {
             steps {
               bat "vagrant up "
-              bat "vagrant ssh"
+              bat "vagrant ssh"     
+            }
+        }
+        stage('Test for ubuntu') {
+            steps {
+              sh "echo hello"     
             }
         }
     }
