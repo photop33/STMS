@@ -3,7 +3,7 @@
 
   tasks:
    - name: Install nginx 
-    apt: pkg=nginx state=installed update=update_cache=true
+    apt: pkg=nginx state=installed update_cache=true
     notify:
     -start nginx 
   
