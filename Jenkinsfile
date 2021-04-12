@@ -10,7 +10,6 @@ pipeline {
                 git 'https://github.com/photop33/STMS.git'
             }
         }
-              
         stage('VAGRANT UP') {
             steps {
               ''' bat vagrant up
