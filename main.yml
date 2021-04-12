@@ -1,13 +1,12 @@
--hosts: all
- become: yes
+- hosts: all
+  become: yes
 
   tasks:
-   - name: Install nginx 
-    apt: pkg=nginx state=installed update_cache=true
-    notify:
-    -start nginx 
-  
+   - name: Install nginx
+     apt: package=nginx state=latest update_cache=true
+     notify:
+      - start nginx
+
   handlers:
-   - name: start nginx
-     service: name=nginx state=started
-  
+    - name: start nginx
+      service: name=nginx state=started
