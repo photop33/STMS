@@ -7,24 +7,22 @@
      notify:
       - start nginx
 
+   - name: Hashicorp consul
+     apt: package=consul state=latest update_cache=true
+     notify:
+       - start consul
+
+
+   - name: Hashicorp nomad
+     apt: package=nomad state=latest update_cache=true
+     notify:
+       - start nomad
+
   handlers:
     - name: start nginx
       service: name=nginx state=started
+    - name: Hashicorp consul
+      service: name=consul state=started
+    - name: Hashicorp nomad
+      service: name=nomad state=started
 
-
-
-  tasks:
-   - name: Hashicorp Consul
-     url: https://www.consul.io/downloads
-     dest: /home/ubuntu
-     notify:
-       - Hashicorp Consul
-    
-    
-  handlers:
-   -name: Hashicorp Consul
-    service: name=Hashicrop state=started
-
-
-    
-  
