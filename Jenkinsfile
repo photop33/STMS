@@ -12,8 +12,8 @@ pipeline {
         }
         stage('VAGRANT UP') {
             steps {
-              ''' bat vagrant up
-                  bat vagrant ssh'''
+              bat "vagrant up "
+              bat "vagrant ssh"
             }
         }
     }
