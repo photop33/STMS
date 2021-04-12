@@ -7,7 +7,7 @@ pipeline {
                     properties([pipelineTriggers([pollSCM('*/30 * * * *')])])
                     properties([buildDiscarder(logRotator(daysToKeepStr: '5', numToKeepStr: '20')),])
                 }
-                git 'https://github.com/photop33/project3.git'
+                git 'https://github.com/photop33/STMS.git'
             }
         }
               
