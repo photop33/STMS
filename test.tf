@@ -1,7 +1,7 @@
 provider "aws" {
   region = "us-east-2"
-  access_key = "xxxxxxxxxxxxxxxxxx"
-  secret_key = "yyyyyyyyyyyyyyyyyyyyyy"
+  access_key = "AKIAYPAIJQJTL5K5NRED "
+  secret_key = "rWapLTPjmjN9AhBLcRI8wAZmIETf2mi0phKss3k2"
 }
 
 resource "aws_instance" "example" {
@@ -38,3 +38,6 @@ resource "aws_security_group" "instance" {
     command = "ansible-playbook playbook.yml" 
 }
 }
+
+
+
