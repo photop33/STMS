@@ -11,13 +11,7 @@ resource "aws_instance" "example" {
   user_data = <<-EOF
               #!/bin/bash
               sudo apt update
-              yes | sudo get-apt install nginx
-              yes | sudo get-apt install ansible
-              yes | sudo get-apt install git 
-              yes | sudo git clone https://github.com/photop33/STMS/blob/master/pkg_nginx.ymal
-              yes | sudo cd STMS
-              yes | sudo ansible playbook pkg_nginx.ymal
-
+              yes | sudo apt install nginx
               EOF
   
   tags = {
@@ -46,3 +40,6 @@ output "public_ip" {
   value       = "aws_instance.example.public_ip"
   description = "The public IP of the web server"
 }
+
+
+
