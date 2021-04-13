@@ -1,4 +1,4 @@
-rovider "aws" {
+provider "aws" {
   region = "us-east-2"
   access_key = "XXXXXXXXXXXXXXXXXXXXX"
   secret_key = "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
@@ -39,6 +39,16 @@ output "public_ip" {
   value       = "aws_instance.example.public_ip"
   description = "The public IP of the web server"
 }
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+}
+}
+resource "aws_instance" "web" {
+  # ...
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
