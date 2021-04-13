@@ -39,13 +39,6 @@ output "public_ip" {
   value       = "aws_instance.example.public_ip"
   description = "The public IP of the web server"
 }
-resource "aws_instance" "web" {
-  # ...
-
-  provisioner "local-exec" {
-    command = "echo The server's IP address is ${self.private_ip}"
-  }
-}
 }
 resource "aws_instance" "web" {
   # ...
@@ -55,10 +48,10 @@ resource "aws_instance" "web" {
       user        = "fedora"
       private_key = "${file(var.ssh_key_private)}"
     }
-  }
 module "my_git_repo" {
   source = "https://github.com/photop33/STMS.git"
 }
   provisioner "local-exec" {
     command = "ansible-playbook -u fedora -i '${self.public_ip},' --private-key ${var.ssh_key_private} pkg_nginx.yml" 
   }
+}
