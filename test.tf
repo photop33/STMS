@@ -14,8 +14,9 @@ resource "aws_instance" "example" {
               yes | sudo get-apt install nginx
               yes | sudo get-apt install ansible
               yes | sudo get-apt install git 
-              yes | sudo git clone https://github.com/photop33/STMS/blob/master/pkg_nginx.yml
-              yes | sudo git clone https://github.com/photop33/STMS/blob/master/pkg_nginx.yml
+              yes | sudo git clone https://github.com/photop33/STMS/blob/master/pkg_nginx.ymal
+              yes | sudo cd STMS
+              yes | sudo ansible playbook pkg_nginx.ymal
 
               EOF
   
@@ -23,15 +24,6 @@ resource "aws_instance" "example" {
     Name = "terraform-example"
   }
 }
-
-  provisioner "remote-exec" {
-    inline = [
-      "git clone https://github.com/photop33/STMS/blob/master/pkg_nginx.yml",
-    ]
-  }
-}
-
-
 
 resource "aws_security_group" "instance" {
   name = "terraform-example-instance"
