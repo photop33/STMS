@@ -11,20 +11,14 @@ resource "aws_instance" "example" {
   user_data = <<-EOF
               #!/bin/bash
               sudo apt update
-              yes | sudo get-apt install nginx
               yes | sudo get-apt install ansible
               yes | sudo get-apt install git 
-              yes | sudo git clone https://github.com/photop33/STMS/blob/master/pkg_nginx.yml
-              yes | sudo cd STMS
-              yes | sudo ansible-playbook pkg_nginx.yml
-              yes | sudo {nomad agent -dev -bind 0.0.0.0 -log-level=INFO
               EOF
   
   tags = {
     Name = "terraform-example"
   }
 }
-
 resource "aws_security_group" "instance" {
   name = "terraform-example-instance"
   ingress {
@@ -40,8 +34,21 @@ resource "aws_security_group" "instance" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
 # Add Output
 output "public_ip" {
   value       = "aws_instance.example.public_ip"
   description = "The public IP of the web server"
+}
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "fedora"
+      private_key = "${file(var.ssh_key_private)}"
+    }
+  }
+module "my_git_repo" {
+  source = "https://github.com/photop33/STMS.git"
+}
+  provisioner "local-exec" {
+    command = "ansible-playbook -u fedora -i '${self.public_ip},' --private-key ${var.ssh_key_private} pkg_nginx.ymal" 
+  }
