@@ -52,6 +52,6 @@ module "my_git_repo" {
   source = "https://github.com/photop33/STMS.git"
 }
   provisioner "local-exec" {
-    command = "ansible-playbook -u fedora -i '${self.public_ip},' --private-key ${var.ssh_key_private} pkg_nginx.yml" 
+    command = "ansible-playbook playbook.yml" 
   }
 }
