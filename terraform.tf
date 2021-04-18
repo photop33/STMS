@@ -39,15 +39,6 @@ output "public_ip" {
   value       = "aws_instance.example.public_ip"
   description = "The public IP of the web server"
 }
-}
-resource "aws_instance" "web" {
-  # ...
-  provisioner "remote-exec" {
-    connection {
-      type        = "ssh"
-      user        = "fedora"
-      private_key = "${file(var.ssh_key_private)}"
-    }
 module "my_git_repo" {
   source = "https://github.com/photop33/STMS.git"
 }
