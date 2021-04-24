@@ -6,11 +6,11 @@ zz=len(z)
 for c in range (0,zz):
     if x[0] == '+' or x[0] == '-' or z[c] == x[0]:
         for i in range (0,y):
-            for c in range (0,zz):
                 if x[i] == '.':
-                    if z[c] == x[i] :
-                        number=number +1 
-                        print (x[i], z[c],"True")
+                    number=number +1 
+                    for c in range (0,zz):
+                            if z[c] == x[i] :
+                                print (x[i], z[c],"True")
     
 if number >= 2:
     print ("flase")
