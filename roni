@@ -2,18 +2,22 @@ x=input("number")
 y=len(x)
 number=0
 el=0
+strr="1234567890"
+
 for i in range (0,y):
     if x[i] == '.':
         number=number +1
         
-    elif x[i] != range (0,10) or x[i] != '.' :
-        el = el + 1
-        
+    elif x[i] != '+' :
+        for z in range (0,10):
+            print (strr[z],x[i])
+            if strr[z] == x[i]:
+                el = el + 1    
     else:
         print ( "False")
         
         
-if number >= 2 or el >= 1:
+if number >= 2 or el+number != y :
     print ("Error")
     
 else:
