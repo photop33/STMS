@@ -1,11 +1,19 @@
 x=input("number")
 y=len(x)
 number=0
+el=0
 for i in range (0,y):
     if x[i] == '.':
-        number=number +1 
+        number=number +1
         
-if number >= 2:
+    elif x[i] != range (0,10) or x[i] != '.' :
+        el = el + 1
+        
+    else:
+        print ( "False")
+        
+        
+if number >= 2 or el >= 1:
     print ("Error")
     
 else:
