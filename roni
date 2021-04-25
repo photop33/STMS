@@ -10,7 +10,6 @@ for i in range (0,y):
         
     elif x[i] != '+' :
         for z in range (0,10):
-            print (strr[z],x[i])
             if strr[z] == x[i]:
                 el = el + 1    
     else:
