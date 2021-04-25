@@ -1,18 +1,12 @@
 x=input("number")
 y=len(x)
 number=0
-z="1234567890"
-zz=len(z)
-for c in range (0,zz):
-    if x[0] == '+' or x[0] == '-' or z[c] == x[0]:
-        for i in range (0,y):
-                if x[i] == '.':
-                    number=number +1 
-                    for c in range (0,zz):
-                            if z[c] == x[i] :
-                                print (x[i], z[c],"True")
-    
+for i in range (0,y):
+    if x[i] == '.':
+        number=number +1 
+        
 if number >= 2:
-    print ("flase")
+    print ("Error")
+    
 else:
     print ("True")
